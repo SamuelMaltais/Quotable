@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './LoginPage.css'
 
-var login = async (userName, password, setMessage) => {
+var login = (userName, password, setMessage) => {
     var user = {
         userName : userName,
         password : password
@@ -14,7 +14,7 @@ var login = async (userName, password, setMessage) => {
                 'application/json;charset=utf-8'
         },
         body: JSON.stringify(user)
-    }).then((res) => res.json()).then((res)=> setMessage(res.message))
+    }).then((res) => res.json()).then((res)=> {setMessage(res.message)})
 }
 catch(err){
     console.log(err)
@@ -28,16 +28,15 @@ export default function LoginPage(){
 
     return(
         <>
-        <form>
-
         <h2>Login</h2>
         <p>Username</p>
-        <input name="userName" type="text" onChange={(e) => setUserName(e.target.value)}></input>
+        <input type="text" onChange={(e) => setUserName(e.target.value)}></input>
         <p>Password</p>
-        <input name="password" type="text" onChange={(e) => setPassword(e.target.value)}></input>
+        <input type="text" onChange={(e) => setPassword(e.target.value)}></input>
         <br></br>
-        <button onClick={() => login(userName, password, setMessage)}>Login</button>
-        </form>
+        <button onClick={() => {
+            var text = login(userName, password, setMessage)
+            }}>Login</button>
         <p className='error-message'>{message}</p>
         </>
     )
