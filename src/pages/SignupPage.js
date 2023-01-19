@@ -29,21 +29,27 @@ export default function SignupPage(){
     const [email, setEmail] = useState()
     const [img, setImg] = useState()
     return(
-        <>
-        <h2>Login</h2>
-        <p>Username</p>
-        <input type="text" onChange={(e) => setUserName(e.target.value)}></input>
-        <p>Password</p>
-        <input type="text" onChange={(e) => setPassword(e.target.value)}></input>
-        <p>Email</p>
-        <input type="email" onChange={(e) => setEmail(e.target.value)}></input>
-        <p>Profile picture</p>
-        <input type="file" onChange={(e) => {setImg(e.target.value)}}></input>
-        <br></br>
-        <button onClick={() => {
+        <div className='form-page'>
+        <div className='nice-form'>
+        <h2 style={{color:"white"}}>Signup</h2>
+        <div className='input-container ic1'>
+        <input type="text" placeholder="Email" onChange={(e) => setEmail(e.target.value)}></input>
+        </div>
+        <div className='cut'></div>
+        <div className='input-container ic2'>
+        <input type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}></input>
+        </div>
+        <div className='cut'></div>
+        <div className='input-container ic2'>
+        <input type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+        </div>
+        <div style={{marginBottom:"50px"}}></div>
+        <button className="nice-button" onClick={() => {
             var text = signup(userName, password, email, img, setMessage)
-            }}>Signup</button>
+        }}>Signup</button>
         <p className='error-message'>{message}</p>
-        </>
+        </div>
+        </div>
     )
 }
+            

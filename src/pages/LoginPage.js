@@ -27,17 +27,23 @@ export default function LoginPage(){
     const [message, setMessage] = useState()
 
     return(
-        <>
-        <h2>Login</h2>
-        <p>Username</p>
-        <input type="text" onChange={(e) => setUserName(e.target.value)}></input>
-        <p>Password</p>
-        <input type="text" onChange={(e) => setPassword(e.target.value)}></input>
-        <br></br>
-        <button onClick={() => {
+        <div className='form-page'>
+        <div className='nice-form'>
+        <h2 style={{color:"white"}} >Login</h2>
+        <div className='input-container ic1'>
+        <input type="text" placeholder="Username" onChange={(e) => setUserName(e.target.value)}></input>
+        </div>
+        <div></div>
+        <div className='cut'></div>
+        <div className='input-container ic1'>
+        <input type="text" placeholder="Password" onChange={(e) => setPassword(e.target.value)}></input>
+        </div>
+        <div style={{marginBottom:"50px"}}></div>
+        <button className="nice-button" onClick={() => {
             var text = login(userName, password, setMessage)
             }}>Login</button>
         <p className='error-message'>{message}</p>
-        </>
+        </div>
+        </div>
     )
 }
