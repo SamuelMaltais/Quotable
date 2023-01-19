@@ -7,14 +7,23 @@ var login = (userName, password, setMessage) => {
         password : password
     }
     try{
-    fetch("http://localhost:300/users/login/", {
+    fetch("http://localhost:6969/users/login/", {
         method: 'POST',
         headers: {
             'Content-Type': 
                 'application/json;charset=utf-8'
         },
         body: JSON.stringify(user)
-    }).then((res) => res.json()).then((res)=> {setMessage(res.message)})
+    }).then((res) => res.json()).then((res)=> {
+        
+        setMessage(res.message)
+        if(res.status == 200){
+            sessionStorage.setItem("userName", userName)
+            userName
+        }
+    
+    
+    })
 }
 catch(err){
     console.log(err)
@@ -25,6 +34,7 @@ export default function LoginPage(){
     const [userName, setUserName] = useState()
     const [password, setPassword] = useState()
     const [message, setMessage] = useState()
+
 
     return(
         <div className='form-page'>
